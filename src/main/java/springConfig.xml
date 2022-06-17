@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    <bean id="axis" class="upi.gpay.entities.Axis">
+    	<constructor-arg value="Axis Bank"></constructor-arg>
+    	<constructor-arg value="987654"></constructor-arg>
+    	<constructor-arg value="Hong kong"></constructor-arg>
+    </bean>
+    
+    <bean id="hdfc" class="upi.gpay.entities.Hdfc">
+    	<property name="bankName" value="Hdfc Bank"></property>
+    	<property name="ifsc" value="741852"></property>
+    	<property name="branch" value="Toranto"></property>
+    </bean>
+
+</beans>
