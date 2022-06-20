@@ -1,6 +1,9 @@
 package upi.gpay.entities;
 
+import org.springframework.context.annotation.Primary;
+
 import upi.gpay.service.Bank;
+
 
 public class Axis implements Bank
 {
