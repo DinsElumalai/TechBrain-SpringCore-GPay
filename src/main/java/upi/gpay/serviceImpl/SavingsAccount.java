@@ -1,4 +1,4 @@
-package upi.gpay.entities;
+package upi.gpay.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -30,6 +30,16 @@ public class SavingsAccount implements Account
 	public void showAccountType() {
 		// TODO Auto-generated method stub
 		System.out.println(toString());
+	}
+
+	public void addAccount() {
+		// TODO Auto-generated method stub
+		System.out.println("Savings Account Added");
+	}
+
+	public String removeAccount() {
+		// TODO Auto-generated method stub
+		return "Savings Account Removed";
 	}
 	
 	

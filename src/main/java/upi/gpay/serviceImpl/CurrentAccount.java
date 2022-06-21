@@ -1,4 +1,4 @@
-package upi.gpay.entities;
+package upi.gpay.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
@@ -32,5 +32,15 @@ public class CurrentAccount implements Account
 	public void showAccountType() {
 		// TODO Auto-generated method stub
 		System.out.println(toString());
+	}
+
+	public void addAccount() {
+		// TODO Auto-generated method stub
+		System.out.println("Current Account Added");
+	}
+
+	public String removeAccount() {
+		// TODO Auto-generated method stub
+		return "Current Account Removed";
 	}
 }

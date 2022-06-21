@@ -4,10 +4,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import upi.gpay.entities.Axis;
-import upi.gpay.entities.CurrentAccount;
 import upi.gpay.entities.Rbc;
-import upi.gpay.entities.SavingsAccount;
+import upi.gpay.service.Account;
 import upi.gpay.service.Bank;
+import upi.gpay.serviceImpl.CurrentAccount;
+import upi.gpay.serviceImpl.LoanAccount;
+import upi.gpay.serviceImpl.SavingsAccount;
 
 /**
  * Hello world!
@@ -28,7 +30,7 @@ public class App
         ApplicationContext context = new ClassPathXmlApplicationContext("springConfig.xml");
         Bank bank = null;
         
-        //XML Config
+       //XML Config
         //Dependency Injection using Constructor Method
         bank  = (Bank) context.getBean("axis");
         bank.showBankDetails();
@@ -41,18 +43,23 @@ public class App
         bank = (Bank) context.getBean("rbc");
         bank.showBankDetails();
         
-        SavingsAccount account = (SavingsAccount) context.getBean("savingsAccount");
+        Account account = (Account) context.getBean("savingsAccount");
         account.showAccountType();
-        account.setAccountType("Savings Account");
+        //account.setAccountType("Savings Account");
         
-        SavingsAccount account2 = (SavingsAccount) context.getBean("savingsAccount");
+        Account account2 = (Account) context.getBean("savingsAccount");
         account2.showAccountType();
         
-        CurrentAccount cAccount = (CurrentAccount) context.getBean("currentAccount");
+        Account cAccount = (Account) context.getBean("currentAccount");
         cAccount.showAccountType();
-        cAccount.setAccountType("Current Account");
+        //cAccount.setAccountType("Current Account");
+        cAccount.addAccount();
         
-        CurrentAccount cAccount2 = (CurrentAccount) context.getBean("currentAccount");
+        Account cAccount2 = (Account) context.getBean("currentAccount");
         cAccount2.showAccountType();
+        
+        Account lAccount = (Account) context.getBean("loanAccount");
+        lAccount.addAccount();
+        lAccount.removeAccount();
     }
 }
