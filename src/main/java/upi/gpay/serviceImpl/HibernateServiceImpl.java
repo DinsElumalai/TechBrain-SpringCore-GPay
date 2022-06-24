@@ -17,7 +17,7 @@ public class HibernateServiceImpl implements HibernateService
 	//ApplicationContext context = new ClassPathXmlApplicationContext("springConfig.xml");
 	Configuration cfg = new Configuration().configure("hbm.config.xml");
 	SessionFactory sessionFactory = cfg.buildSessionFactory();
-	Session session = null;
+	Session session = sessionFactory.openSession();
 	Transaction txn = null;
 	UserAccount userAccount = new UserAccount();
 	
@@ -31,7 +31,7 @@ public class HibernateServiceImpl implements HibernateService
 		 userAccount.setMobile(1234567890);
 		 userAccount.setEmail("test@gmail.com");
 		 
-		 session = sessionFactory.openSession();
+		 
 		 txn = session.beginTransaction();
 		 session.persist(userAccount);
 		 txn.commit();
