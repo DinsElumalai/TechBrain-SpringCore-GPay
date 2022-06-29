@@ -9,6 +9,7 @@ import upi.gpay.service.Account;
 import upi.gpay.service.Bank;
 import upi.gpay.service.HibernateService;
 import upi.gpay.serviceImpl.CurrentAccount;
+import upi.gpay.serviceImpl.HibernateAnnotationServiceImpl;
 import upi.gpay.serviceImpl.LoanAccount;
 import upi.gpay.serviceImpl.SavingsAccount;
 
@@ -64,7 +65,13 @@ public class App
         lAccount.removeAccount();
         
         HibernateService hibernateService = (HibernateService) context.getBean("hibernateServiceImpl");
-        hibernateService.insertData();
-        hibernateService.selectData();
+       // hibernateService.insertData();
+       // hibernateService.selectData();
+        
+        HibernateAnnotationServiceImpl hibernateAnnService = (HibernateAnnotationServiceImpl) context.getBean("hibernateAnnotationServiceImpl");
+        //hibernateAnnService.insertData();
+        //hibernateAnnService.selectData();
+        //hibernateAnnService.deleteData();
+        hibernateAnnService.selectAllData();
     }
 }
