@@ -8,6 +8,10 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import upi.gpay.entities.MerchantAccount;
 import upi.gpay.service.HibernateService;
 
@@ -51,6 +55,40 @@ public class HibernateAnnotationServiceImpl implements HibernateService
 		{
 			System.out.println(account);
 		}
+		txn.commit();
+	}
+	
+	public void findDataByShoptype()
+	{
+		txn = session.beginTransaction();
+		String hql = "SELECT ma.shopType FROM MerchantAccount ma GROUP BY ma.shopType";
+		Query query = session.createQuery(hql);
+		List<String> merchantAccounts = query.getResultList();
+		for(String account : merchantAccounts)
+		{
+			System.out.println(account);
+		}
+		txn.commit();
+	}
+	
+	public void findTopByShopType()
+	{
+		txn = session.beginTransaction();
+		
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<MerchantAccount> cr = cb.createQuery(MerchantAccount.class);
+		Root<MerchantAccount> merchantAccount = cr.from(MerchantAccount.class);
+		
+		cr.orderBy(cb.asc(merchantAccount.get("shopType")));
+				
+		Query query = session.createQuery(cr);
+		List<MerchantAccount> merchantAccounts = query.getResultList();
+		
+		for(MerchantAccount account : merchantAccounts)
+		{
+			System.out.println(account);
+		}
+		
 		txn.commit();
 	}
 

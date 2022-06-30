@@ -73,5 +73,7 @@ public class App
         //hibernateAnnService.selectData();
         //hibernateAnnService.deleteData();
         hibernateAnnService.selectAllData();
+        hibernateAnnService.findDataByShoptype();
+        hibernateAnnService.findTopByShopType();
     }
 }
